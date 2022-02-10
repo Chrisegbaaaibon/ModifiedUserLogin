@@ -6,16 +6,16 @@ let kiki = "Fields must be filled properly🙄"
 const user = new schema({
    name: {
       type: String,
-      required: true | kiki
+      required: [true, kiki] 
    },
    email:{
       type: String,
       unique: true,
-      required: true | kiki
+      required: [true, kiki]
    },
    password:{
       type:String,
-      required: true | kiki
+      required: [true, kiki]
    }
 })
 

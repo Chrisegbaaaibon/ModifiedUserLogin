@@ -36,11 +36,14 @@ exports.createUser = async (req, res)=>{
 
 
 exports.loginUser = async(req, res)=>{
-   user.findOne(),(err, (emailCreated, password))
-   if((emailCreated, password)){
-      if(user.password = req.body.password){
+   try {
+      let email = req.body.email
+      let password = req.body.password
+   user.findOne({email, password})
+   if((email, password)){
+      if(user.password == req.body.password){
          res.json({
-            message: "Bravo!, Successfully Logged in"
+            message: `Bravo!, Successfully Logged in as ${email}🤩🚀🐐`
          })
       }else{
          res.json({
@@ -49,7 +52,10 @@ exports.loginUser = async(req, res)=>{
       }
    }else{
       res.json({
-         message: " User not registered!"
+         message:  `${req.body.email} is not registered!`
       });
+   }
+   } catch (error) {
+      console.log(error)
    }
 };

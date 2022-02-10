@@ -8,6 +8,6 @@ router.use((req, res, next)=>{
 })
 
 router.post('/api/create', createUser);
-router.get('/login', loginUser);
+router.get('/api/login', loginUser);
 
 module.exports = router;

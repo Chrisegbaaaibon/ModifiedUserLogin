@@ -1,12 +1,21 @@
 const express = require('express');
 require('dotenv').config();
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 
 const { db } = require('./database/connection');
 const  router = require('./routes/router')
 
 const app = express();
 
+app.use(
+   cookieSession({
+      name: "Ghostcod3r",
+      keys: ["$/fkk@n" ],
+      secret: process.env.SECRET_KEY,
+      httpOnly: true
+   })
+)
 app.use( bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
