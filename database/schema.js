@@ -16,7 +16,7 @@ const user = new schema({
    password:{
       type:String,
       required: [true, kiki]
-   }
+   }  
 })
 
 // Hash Password 

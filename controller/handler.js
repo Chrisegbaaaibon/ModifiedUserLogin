@@ -39,21 +39,20 @@ exports.loginUser = async(req, res)=>{
    try {
       let email = req.body.email
       let password = req.body.password
-   user.findOne({email, password})
-   if((email, password)){
-      if(user.password == req.body.password){
-         res.json({
-            message: `Bravo!, Successfully Logged in as ${email}🤩🚀🐐`
-         })
-      }else{
-         res.json({
-            message: "Wrong Password!🙄🙄"
-         })
-      }
-   }else{
+   if(!user){
       res.json({
          message:  `${req.body.email} is not registered!`
       });
+   }else{
+      if(!password == user.password){
+         res.stat(400).json({
+            message: `Wrong password !!🙄🙄`
+         })
+      }else{
+         res.json({
+            message: `Bravo!, Successfully Logged in as ${email} 🤩🚀🐐`
+         })
+      }
    }
    } catch (error) {
       console.log(error)
